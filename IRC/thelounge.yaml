@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: thelounge-deployment
+  labels:
+    app: thelounge
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: thelounge
+      lbType: external
+  template:
+    metadata:
+      labels:
+        app: thelounge
+        lbType: external
+    spec:
+      volumes:
+      - name: thelounge-storage
+        persistentVolumeClaim:
+          claimName: thelounge-pvc
+      containers:
+      - name: thelounge
+        image: thelounge/thelounge
+        ports:
+        - containerPort: 9000
+          name: "thelounge-port"
+        volumeMounts:
+        - name: thelounge-storage
+          mountPath: "/:z"
+          subPath: "thelounge"

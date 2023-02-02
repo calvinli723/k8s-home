@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: inspircd-deployment
+  labels:
+    app: inspircd
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: inspircd
+      lbType: external
+  template:
+    metadata:
+      labels:
+        app: inspircd
+        lbType: external
+    spec:
+      containers:
+      - name: inspircd
+        image: inspircd/inspircd-docker
+        ports:
+        - containerPort: 6667
+          name: "inspircd-port"
