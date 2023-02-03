@@ -5,11 +5,12 @@ metadata:
   labels:
     app: thelounge
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: thelounge
       lbType: external
+
   template:
     metadata:
       labels:
@@ -20,6 +21,11 @@ spec:
       - name: thelounge-storage
         persistentVolumeClaim:
           claimName: thelounge-pvc
+
+      #securityContext:
+      #  runAsUser: 0
+      #  fsGroup: 0
+      #  runAsGroup: 0
       containers:
       - name: thelounge
         image: thelounge/thelounge
@@ -28,5 +34,9 @@ spec:
           name: "thelounge-port"
         volumeMounts:
         - name: thelounge-storage
-          mountPath: "/:z"
+          mountPath: "/var/opt/thelounge"
           subPath: "thelounge"
+        resources:
+          limits:
+            memory: 1Gi
+            cpu: "4"

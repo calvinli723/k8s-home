@@ -22,3 +22,7 @@ spec:
         ports:
         - containerPort: 6667
           name: "inspircd-port"
+        resources:
+          limits:
+            memory: 1Gi
+            cpu: "4"

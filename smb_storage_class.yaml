@@ -3,7 +3,7 @@ kind: StorageClass
 metadata:
   name: smb
   annotations:
-    storageclass.kubernetes.io/is-default-class: "true"
+    storageclass.kubernetes.io/is-default-class: "false"
 provisioner: smb.csi.k8s.io
 parameters:
   source: "//939A/939Shared"
