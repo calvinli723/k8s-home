@@ -24,7 +24,7 @@ spec:
           name: "inspircd-port"
         - containerPort: 6697
           name: "inspircd-tls"
-        resources:
-          limits:
-            memory: 1Gi
-            cpu: "4"
+            #resources:
+            #  limits:
+            #    memory: 1Gi
+            #    cpu: "1"

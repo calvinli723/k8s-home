@@ -36,7 +36,7 @@ spec:
         - name: thelounge-storage
           mountPath: "/var/opt/thelounge"
           subPath: "thelounge"
-        resources:
-          limits:
-            memory: 1Gi
-            cpu: "4"
+            #resources:
+            #  limits:
+            #    memory: 1Gi
+            #    cpu: "1"
