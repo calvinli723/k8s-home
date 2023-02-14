@@ -1,0 +1,3 @@
+[submodule "helm-crud"]
+	path = helm-crud
+	url = git@github.com:calvinli723/helm-crud.git
